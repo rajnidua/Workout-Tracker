@@ -12,7 +12,9 @@ const API = {
   },
   async addExercise(data) {
     console.log("Location is ***********" + location.search.split("=")[1]);
-    console.log("Data inside add excercise inside api js file " + data.sets);
+    console.log(
+      "Data inside add excercise inside api js file " + JSON.stringify(data)
+    );
     const id = location.search.split("=")[1];
     const fetchUrl = "/api/workouts/" + id;
     console.log("The fetch Url is " + fetchUrl);
