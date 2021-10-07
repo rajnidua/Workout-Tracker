@@ -12,11 +12,14 @@ const API = {
   },
   async addExercise(data) {
     console.log("Location is ***********" + location.search.split("=")[1]);
+    console.log("Data inside add excercise inside api js file " + data.sets);
     const id = location.search.split("=")[1];
-
-    const res = await fetch("/api/workouts/" + id, {
+    const fetchUrl = "/api/workouts/" + id;
+    console.log("The fetch Url is " + fetchUrl);
+    const res = await fetch(fetchUrl, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
+
       body: JSON.stringify(data),
     });
 
