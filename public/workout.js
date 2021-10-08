@@ -3,12 +3,12 @@ async function initWorkout() {
   console.log("Last workout:", lastWorkout);
   if (lastWorkout) {
     document
-      .querySelector("a[href='/exercise?']")
-      .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
+      .querySelector("a[href='./exercise.html?']")
+      .setAttribute("href", `./exercise.html?id=${lastWorkout._id}`);
 
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
-      totalDuration: lastWorkout.totalDuration,
+      //totalDuration: lastWorkout.totalDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises),
     };
@@ -25,6 +25,7 @@ function tallyExercises(exercises) {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
       acc.totalSets = (acc.totalSets || 0) + curr.sets;
       acc.totalReps = (acc.totalReps || 0) + curr.reps;
+      acc.totalDuration = (acc.totalDuration || 0) + curr.duration;
     } else if (curr.type === "cardio") {
       acc.totalDistance = (acc.totalDistance || 0) + curr.distance;
     }
