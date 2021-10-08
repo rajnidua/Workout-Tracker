@@ -7,17 +7,18 @@ const workoutSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  id: {
+  /* id: {
     type: String,
-  },
+  }, */
   exercises: [
     {
       type: { type: String, default: "", trim: true },
       name: { type: String, default: "", trim: true },
       weight: { type: Number, required: "Enter a weight" },
-      reps: { type: Number, required: "Enter a reps" },
       sets: { type: Number, required: "Enter a sets" },
+      reps: { type: Number, required: "Enter a reps" },
       duration: { type: Number, required: "Enter a duration" },
+      distance: {type: Number},
     },
   ],
 });

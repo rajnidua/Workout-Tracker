@@ -11,18 +11,13 @@ const API = {
     return json[json.length - 1];
   },
   async addExercise(data) {
-    console.log("Location is ***********" + location.search.split("=")[1]);
-    console.log(
-      "Data inside add excercise inside api js file " + JSON.stringify(data)
-    );
     const id = location.search.split("=")[1];
-    const fetchUrl = "/api/workouts/" + id;
-    console.log("The fetch Url is " + fetchUrl);
-    const res = await fetch(fetchUrl, {
+    console.log(data);
+
+    const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
 
     const json = await res.json();
