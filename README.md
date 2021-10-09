@@ -36,7 +36,7 @@ https://infinite-ravine-72963.herokuapp.com/
 
 ## Screenshots
 
-![](./public/images/workoutTracker1.png)
+![](./public/images/workoutTrackerGraph.png)
 ![](./public/images/workoutTracker2.png)
 ![](./public/images/workoutTracker3.png)
 
@@ -58,11 +58,15 @@ heroku --version
 heroku login
 heroku create
 ```
-Push to heroku using
+Push to heroku using(push the updated version to Git before doing this)
 ```md
 git add -A
 git commit -m 'deploying'
 git push heroku main
+```
+To run the app from CLI
+```md
+heroku open
 ```
 
 ## Run
