@@ -3,7 +3,7 @@ const Workout = require("../models/workout.js");
 
 
  
-router.get("/api/workouts", (req, res) => {
+router.get("/workouts", (req, res) => {
     Workout.aggregate([{
         
         $addFields: {
@@ -26,7 +26,7 @@ router.get("/api/workouts", (req, res) => {
 
 
 
-router.post("/api/workouts", (req, res) => {
+router.post("/workouts", (req, res) => {
   Workout.create({})
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -38,7 +38,7 @@ router.post("/api/workouts", (req, res) => {
 
 
 
- router.put("/api/workouts/:id", (req, res) => {
+ router.put("/workouts/:id", (req, res) => {
   console.log(req.body);
   Workout.findOneAndUpdate({_id:req.params.id} ,{$push:{exercises: [ {
        "type": req.body.type,
@@ -71,7 +71,7 @@ router.post("/api/workouts", (req, res) => {
 
 
 
-router.post("/api/workouts/bulk", ({ body }, res) => {
+/* router.post("/workouts/bulk", ({ body }, res) => {
   Workout.insertMany(body)
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -79,12 +79,12 @@ router.post("/api/workouts/bulk", ({ body }, res) => {
     .catch((err) => {
       res.status(400).json(err);
     });
-});
+}); */
 
 
 
 
- router.delete("/api/workouts/", (req, res) => {
+ router.delete("/workouts/", (req, res) => {
          Workout.deleteMany({})
         .then(dbWorkout => {
             res.json(dbWorkout);
@@ -92,12 +92,7 @@ router.post("/api/workouts/bulk", ({ body }, res) => {
         .catch(err => {
             res.json(err);
         });
-    });
-
-
-
-    
-    
+    }); 
 
 //fully working code that returns id and total duration
 /*  router.get("/api/workouts/range",(req, res) =>{
@@ -115,7 +110,7 @@ router.post("/api/workouts/bulk", ({ body }, res) => {
 });  */
 
 //fully working code using project
- router.get("/api/workouts/range",(req, res) =>{
+ router.get("/workouts/range",(req, res) =>{
    Workout.aggregate([
   
   { $project : {  
@@ -134,28 +129,6 @@ router.post("/api/workouts/bulk", ({ body }, res) => {
     }) 
 
 });  
-
-
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-
- 
-    
-
 
 
 module.exports = router;

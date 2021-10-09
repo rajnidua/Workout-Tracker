@@ -28,24 +28,4 @@ const workoutSchema = new Schema({
 const Workout = mongoose.model("Workout", workoutSchema);
 
 
-/*var userid = new ObjectID("537ec520e98bcb378e811d54");
-
-console.log( userid );
-
-Workout.aggregate([
-  { "$match": { "_id": mongojs.ObjectId } },
-  { "$unwind": "$friends" },
-  { "$match": { "friends.status": 0 } }],
-  function( err, data ) {
-
-    if ( err )
-      throw err;
-
-    console.log( JSON.stringify( data, undefined, 2 ) );
-
-  }
-  */
-
-
-
 module.exports = Workout;
