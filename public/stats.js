@@ -2,21 +2,47 @@ function calculateTotalWeight(data) {
   const totals = [];
 
   data.forEach((workout) => {
-    const workoutTotal = workout.exercises.reduce((total, { type, weight }) => {
+   
+    
+    if(workout.exercises !== null){
+    const workoutTotal = workout.exercises
+    .reduce((total, { type, weight }) => {
       if (type === 'resistance') {
         return total + weight;
       }
       return total;
     }, 0);
-
-    totals.push(workoutTotal);
+  totals.push(workoutTotal);}    
   });
-
   return totals;
 }
 
+/* function duration(data) {
+  let durations = [];
+
+  data.forEach(workout => {
+    if(workout.exercises !== null){
+    workout.exercises.forEach(exercise => {
+      durations.push(exercise.duration);
+    });
+  }
+  });
+
+
+  return durations;
+} */
+
+function duration(data){
+  //console.log("I am in total duration data"+ data);
+
+}
+
+
+
 function populateChart(data) {
+  console.log(data);
   const durations = data.map(({ totalDuration }) => totalDuration);
+  //const durations = duration(data);
   const pounds = calculateTotalWeight(data);
 
   const line = document.querySelector('#canvas').getContext('2d');
