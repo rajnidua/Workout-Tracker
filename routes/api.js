@@ -15,7 +15,7 @@ router.get("/workouts", (req, res) => {
         $sort: {day: 1}
     }])
     .then(dbWorkout => {
-        res.json(dbWorkout);
+        res.json(dbWorkout.slice(dbWorkout.length-7));
     })
     .catch(err => {
         res.status(400).json(err);
@@ -122,7 +122,7 @@ router.post("/workouts", (req, res) => {
     totalDuration : { $sum : '$exercises.duration' } } },
   { $sort : { day : 1 } }
 ]) .then(dbWorkout => {
-    res.json(dbWorkout);
+    res.json(dbWorkout.slice(dbWorkout.length-7));
     })
     .catch(err => {
         res.status(400).json(err);
